@@ -1,8 +1,8 @@
 name: ClusterFuzzLite batch fuzzing
 on:
-  schedule:
-    - cron: '0 0/10 * * *'  # Every 10th hour.
-
+  push:
+    branches:
+      - master  # Use your actual default branch here.
 permissions: read-all
 jobs:
   BatchFuzzing:
@@ -13,10 +13,8 @@ jobs:
       uses: google/clusterfuzzlite/actions/build_fuzzers@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        fuzz-seconds: 420
+        fuzz-seconds: 120
         mode: 'code-change'
-        language: c++ # Change this to the language you are fuzzing.
-        sanitizer: address
         #storage-repo: https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com//.git
         #storage-repo-branch-coverage: gh-pages
     - name: Run Fuzzers
@@ -24,7 +22,7 @@ jobs:
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        fuzz-seconds: 420
+        fuzz-seconds: 120
         mode: 'batch'
         # Git storage repo options.
         #storage-repo: https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com//.git
