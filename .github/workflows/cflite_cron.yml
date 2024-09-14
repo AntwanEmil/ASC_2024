@@ -16,7 +16,7 @@ jobs:
       id: run
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.CORPUS_ACCESS_TOKEN }}
         fuzz-seconds: 600
         mode: 'prune'
         output-sarif: true
@@ -37,7 +37,7 @@ jobs:
       id: run
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
         fuzz-seconds: 600
         mode: 'coverage'
         sanitizer: 'coverage'
