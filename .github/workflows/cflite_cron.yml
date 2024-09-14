@@ -20,6 +20,9 @@ jobs:
         fuzz-seconds: 600
         mode: 'prune'
         output-sarif: true
+        storage-repo: https://${{ secrets.CORPUS_ACCESS_TOKEN }}@github.com/AntwanEmil/corpus.git
+        storage-repo-branch: master   # Optional. Defaults to "main"
+    
   Cron_Coverage:
     runs-on: ubuntu-latest
     steps:
@@ -30,9 +33,6 @@ jobs:
         language: c++ # Change this to the language you are fuzzing.
         sanitizer: coverage
         
-        storage-repo: https://${{ secrets.CORPUS_ACCESS_TOKEN }}@github.com/AntwanEmil/corpus.git
-        storage-repo-branch: master   # Optional. Defaults to "main"
-    
     - name: Run Fuzzers
       id: run
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
