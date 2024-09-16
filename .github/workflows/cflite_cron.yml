@@ -38,7 +38,6 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         fuzz-seconds: 600
         mode: 'coverage'
-        sanitizer: 'coverage'
       
         storage-repo: https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/AntwanEmil/coverage.git
         storage-repo-branch: master   # Optional. Defaults to "main"
