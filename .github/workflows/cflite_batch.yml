@@ -7,6 +7,14 @@ permissions: read-all
 jobs:
   BatchFuzzing:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer:
+        - address
+        - undefined
+        # - memory
+
     steps:
     - name: Build Fuzzers
       id: build
@@ -20,7 +28,7 @@ jobs:
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        fuzz-seconds: 120
+        fuzz-seconds: 220
         mode: 'batch'
         # Git storage repo options.
         #storage-repo: https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com//.git
