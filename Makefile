@@ -5,7 +5,7 @@ CXXFLAGS += -std=c++11
 all: fuzzer
 
 clean:
-	rm -fv *.o *.a *.gch *.so HF.* *_fuzzer crash-* *.zip 
+	rm -fv *.o *.a *.gch *.gcno *.so HF.* *_fuzzer crash-* *.zip 
 
 
 

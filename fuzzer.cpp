@@ -14,8 +14,18 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   }
   std::string str(reinterpret_cast<const char *>(data), size);
   DoStuff(str);  // Disregard the output.
+  
+  int len = static_cast<int>(size);
+  global_buffer_overflow(len);
+  
+  stack_buffer_overflow(len);
+
+  undefined_behavior(size);
+
   if (data[0] == 'a') {
     return 0;
   }
   return 0;
 }
+
+

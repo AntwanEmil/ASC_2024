@@ -6,3 +6,9 @@
 #include <string>
 
 size_t DoStuff(const std::string &str);
+
+void global_buffer_overflow(int len);
+
+void stack_buffer_overflow(int r);
+
+void undefined_behavior(size_t len);

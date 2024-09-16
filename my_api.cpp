@@ -3,7 +3,7 @@
 
 // Implementation of "my_api".
 #include "my_api.h"
-
+#include <cstring>
 #include <vector>
 // Do some computations with 'str', return the result.
 // This function contains a bug. Can you spot it?
@@ -30,3 +30,24 @@ size_t DoStuff(const std::string &str) {
     }
   return Vec[Idx];
 }
+
+int arr[10];
+void global_buffer_overflow(int len){
+  int somevar = (int) arr[len];
+}
+
+// ASAN
+void stack_buffer_overflow(int r){
+        char x[10];
+        memset(x,0,10);
+        int res = x[r];
+}
+
+
+// UBSAN
+void undefined_behavior(size_t len){
+  int k = 0x7fffffff;
+  k += len;
+}
+
+
