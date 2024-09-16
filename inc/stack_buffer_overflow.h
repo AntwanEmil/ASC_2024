@@ -1,4 +1,4 @@
 #include <string>
 
 
-void stack_buffer_overflow(int r);
+int stack_buffer_overflow(int r);

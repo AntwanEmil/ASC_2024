@@ -3,8 +3,12 @@
 #include <cstring>
 
 // ASAN
-void stack_buffer_overflow(int r){
+
+
+int stack_buffer_overflow(int r);{
         char x[10];
+        printf("%d\n",r);
         memset(x,0,10);
-        int res = x[r];
+        int res = x[r*10];
+        return res;
 }
