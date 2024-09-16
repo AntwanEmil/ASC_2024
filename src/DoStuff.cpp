@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 
 // Implementation of "my_api".
-#include "my_api.h"
+#include "../inc/DoStuff.h"
 #include <cstring>
 #include <vector>
 // Do some computations with 'str', return the result.
@@ -30,24 +30,3 @@ size_t DoStuff(const std::string &str) {
     }
   return Vec[Idx];
 }
-
-int arr[10];
-void global_buffer_overflow(int len){
-  int somevar = (int) arr[len];
-}
-
-// ASAN
-void stack_buffer_overflow(int r){
-        char x[10];
-        memset(x,0,10);
-        int res = x[r];
-}
-
-
-// UBSAN
-void undefined_behavior(size_t len){
-  int k = 0x7fffffff;
-  k += len;
-}
-
-
