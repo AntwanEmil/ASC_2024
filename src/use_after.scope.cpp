@@ -2,10 +2,11 @@
 #include <cstring>
 
 void use_after_scope(int len) {
+  int *a;
   int *p;
   if (len > 10) {
     int x[10];
     p = x;
   }
-  *p = 1;
+  //*p = 1;
 }
