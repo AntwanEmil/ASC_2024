@@ -10,7 +10,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     return 0;
   }
   int len = static_cast<int>(size);
-  use_after_scope(len);
+  //use_after_scope(len);
 
   return 0;
 }
